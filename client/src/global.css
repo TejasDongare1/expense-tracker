@@ -1,0 +1,41 @@
+.user-input{
+    display: block;
+    margin: 15px auto;
+    width: 100%;
+    border-radius: 3px;
+    padding: 2px 5px;
+    outline: none;
+}
+
+.user-input:focus, .user-input:active{
+    border: 2px solid #4CAF50;
+    outline: none;
+}
+.btn{
+    margin: 10px 0;
+    padding: 5px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+.btn:hover{
+    background-color: #45a049;
+}
+.auth-form{
+    width: 200px;
+    border: 2px solid black;
+    padding: 20px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #cce6ff;
+
+}
+.heading{
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
