@@ -3,11 +3,15 @@ import "./Home.css"
 import toast, {Toaster} from "react-hot-toast"
 import axios from 'axios'
 import TransactionCard from '../../components/TransactionCard/TransactionCard'
+import ImgAdd from "./wallet.png"
+import { Link } from 'react-router-dom'
 
 function Home() {
 
   const [user, setUser] = useState("")
   const [transactions , setTransactions] = useState([])
+  const [netIncome, setNetIncome] = useState(0)
+  const [netExpense, setNetExpense] = useState(0)
 
   useEffect(()=>{
     const currentUser = JSON.parse(localStorage.getItem("currentUser"))
@@ -21,6 +25,22 @@ function Home() {
     }
   },[])
 
+  useEffect(()=>{
+    let income = 0
+    let expense = 0
+
+    transactions.forEach(transaction => {
+      if(transaction.type === "credit"){
+        income += transaction.amount
+  }else{
+    expense += transaction.amount
+    }
+    });
+
+    setNetIncome(income)
+    setNetExpense(expense)
+  },[transactions])
+
   const loadTransactions = async ()=>{
     if(!user._id){
       return
@@ -30,9 +50,13 @@ function Home() {
 
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/transactions?userId=${user._id}`)
 
+    const allTransactions = response.data.data
+
+   
+
     toast.dismiss()
 
-    setTransactions(response.data.data)
+    setTransactions(allTransactions)
   }
 
   useEffect(()=>{
@@ -55,13 +79,38 @@ function Home() {
         Logout
       </span>
 
+      <div className='transactions-value'>
+        <div className='items'>
+          <span className='amount-value'>+{netIncome}</span>
+          <span className='amount-title'>Total Income</span>
+        </div>
+
+        <div className='items'>
+        <div>
+          <span className='amount-value'>-{netExpense}</span>
+          <span className='amount-title'>Total Expense</span>
+        </div>
+      </div>
+
+      <div className='items'>
+        <div>
+          <span className='amount-value'>{netIncome - netExpense}</span>
+          <span className='amount-title'>Total Balance</span>
+        </div>
+      </div>
+      </div>
+
+     
+     <div className='transactions-container'>
       {
         transactions.map((transaction)=>{
           const {_id, title, amount, category, type, createdAt} = transaction
+          
+         
 
           return (<TransactionCard
           key={_id}
-          id={_id}
+          _id={_id}
           title={title}
           amount={amount}
           category={category}
@@ -71,6 +120,10 @@ function Home() {
           />)
         })
       }
+       </div>
+       <Link to="./add-transaction">
+       <img src={ImgAdd} className="add-transaction"/>
+       </Link>
       <Toaster/>
     </div>
   )

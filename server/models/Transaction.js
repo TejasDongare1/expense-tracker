@@ -26,6 +26,6 @@ const transactionSchema = new Schema({
     timestamps:true,
 });
 
-const Transaction = model("Transaction", transactionSchema)
+const Transaction = model("Transaction", transactionSchema);
 
 export default Transaction;

@@ -5,6 +5,7 @@ import Home from './views/Home/Home';
 import Login from './views/Login/Login';
 import Signup from './views/Signup/Signup';
 import "./global.css"
+import AddTransaction from './views/AddTransaction/AddTransaction';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,6 +22,14 @@ const router =createBrowserRouter([
     {
         path:"/login",
         element: <Login/>
+    },
+    {
+        path:"/login",
+        element: <Login/>
+    },
+    {
+        path:"/add-transaction",
+        element: <AddTransaction/>
     },
     {
         path:"*",
