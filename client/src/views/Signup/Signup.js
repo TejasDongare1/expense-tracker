@@ -3,6 +3,7 @@ import "./Signup.css"
 import toast, { Toaster } from "react-hot-toast"
 import axios from 'axios'
 import {Link} from "react-router-dom"
+import IllustrationSignup from "./signup-img.jpg"
 
 function Signup() {
 
@@ -30,6 +31,10 @@ function Signup() {
         password: '',
         dob: ''
       })
+      toast.loading("Redirecting to Login Page")
+      setTimeout(() => {
+        window.location.href = "/login"
+      }, 2000);
     }
     else {
       toast.error("Signup Failed!! Please try again.")
@@ -42,7 +47,7 @@ function Signup() {
     <div>
       <h1 className='heading'>Signup Now</h1>
 
-      <form className='auth-form'>
+      <form className='form'>
         <input type="text"
           placeholder="Full Name"
           className='user-input'
@@ -80,8 +85,9 @@ function Signup() {
           onClick={signup}
         >Signup</button>
         <br />
-        <Link to="/login">Already have an Account? Login</Link>
+        <Link to="/login" className='link'>Already have an Account? Login</Link>
       </form>
+      <img src={IllustrationSignup} alt="" className='illustration'/>
       <Toaster />
     </div>
   )

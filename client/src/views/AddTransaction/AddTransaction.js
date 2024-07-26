@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import toast, {Toaster} from 'react-hot-toast'
 import "./AddTransaction.css"
+import IllustrationAdd from "./add-illustration.jpg"
 
 function AddTransaction() {
 
@@ -9,7 +10,7 @@ function AddTransaction() {
     const [title, setTitle] = useState('')
     const [amount, setAmount] = useState(0)
     const [category, setCategory] = useState('')
-    const [type, setType] = useState('')
+    const [type, setType] = useState('credit')
 
 
     useEffect(()=>{
@@ -32,18 +33,20 @@ function AddTransaction() {
             category,
             type
         })
+        console.log(response)
+        if(response.data.success){
+          toast.success("Transaction Added Successfully")
 
-        if(response.data.success === false){
-          toast.error("Failed to add transaction")
+          setTitle('')
+          setAmount(0)
+          setCategory('')
+          setType('')
         }
         else{
-          toast.success("Transaction Added Successfully")
+          toast.error("Failed to Add Transaction")
         }
 
-        setTitle('')
-        setAmount(0)
-        setCategory('')
-        setType('')
+      
 
         setTimeout(() => {
             window.location.href = "/"
@@ -53,9 +56,10 @@ function AddTransaction() {
 
   return (
     <div>
-        <h1 className=''>Hey👋,{user.fullName}</h1>
-        <h3 className='h3'>Add Your Transactions Here!!</h3>
+        <h1 className='add-name'>Hey👋,{user.fullName}</h1>
+        {/* <h3 className='h3'>Add Your Transactions Here!!</h3> */}
         <h2 className='heading'>Add Transaction</h2>
+        <div className='form-div'>
         <form action="" className='auth-form'>
             <input
             type="text"
@@ -73,7 +77,7 @@ function AddTransaction() {
             onChange={(e) => setAmount(e.target.value)}
             />
 
-            <select className='user-input'
+            <select className='select'
             value={type}
             onChange = {(e)=> setType(e.target.value)}
             >
@@ -81,39 +85,40 @@ function AddTransaction() {
                 <option value="debit">Expense</option>
             </select>
 
-            <select name="" id="" className='user-input' value={category}
+            <select name="" id="" className='select' value={category}
             onChange = {(e)=> setCategory(e.target.value)}>
                 <option value="">Select Category</option>
-                <option value="groceries">Groceries</option>
+                <option value="Groceries">Groceries</option>
                 <option value="Food">Food</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="transportation">Transportation</option>
-                <option value="shopping">Shopping</option>
-                <option value=" utilities">Utilities</option>
-                <option value="savings">Savings</option>
-                <option value="investments">Investments</option>
-                <option value="rent">Rent</option>
-                <option value="salary">Salary</option>
-                <option value="miscellaneous">Miscellaneous</option>
-                <option value="charity">Charity</option>
-                <option value="pet">Pet</option>
-                <option value="travel">Travel</option>
-                <option value="education">Education</option>
-                <option value="health">Health</option>
-                <option value="family">Family</option>
-                <option value="holidays">Holidays</option>
-                <option value="debt">Debt</option>
-                <option value="loan">Loan</option>
-                <option value="loan repayment">Loan Repayment</option>
-                <option value="gift">Gift</option>
-                <option value="donation">Donation</option>
-                <option value="travel">Travel</option>
-                <option value="learning">Learning</option>
-                <option value="other">Other</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Savings">Savings</option>
+                <option value="Investments">Investments</option>
+                <option value="Rent">Rent</option>
+                <option value="Salary">Salary</option>
+                <option value="Miscellaneous">Miscellaneous</option>
+                <option value="Charity">Charity</option>
+                <option value="Pet">Pet</option>
+                <option value="Travel">Travel</option>
+                <option value="Education">Education</option>
+                <option value="Health">Health</option>
+                <option value="Family">Family</option>
+                <option value="Holidays">Holidays</option>
+                <option value="Loan">Loan</option>
+                <option value="Loan Repayment">Loan Repayment</option>
+                <option value="Gift">Gift</option>
+                <option value="Donation">Donation</option>
+                <option value="Travel">Travel</option>
+                <option value="Learning">Learning</option>
+                <option value="Other">Other</option>
             </select>
 
             <button type="button" className='btn' onClick={addTransaction}>Add Transaction</button>
         </form>
+        <img src={IllustrationAdd} alt="" className='illustration'/>
+        </div>
         <Toaster />
     </div>
   )

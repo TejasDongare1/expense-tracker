@@ -3,6 +3,7 @@ import "./Login.css"
 import {Link} from "react-router-dom"
 import axios from 'axios'
 import toast, {Toaster} from 'react-hot-toast'
+import IllustrationLogin from "./login-illustration.jpg"
 
 function Login() {
 
@@ -58,9 +59,10 @@ function Login() {
         onClick={loginNow}
         >Login</button>
        <br />
-       <Link to="/Signup">Don't have an Account? Signup</Link>
+       <Link to="/Signup" className='link'>Don't have an Account? Signup</Link>
 
       </form>
+      <img src={IllustrationLogin} alt="" className='illustration'/>
       <Toaster/>
     </div>
   )

@@ -1,41 +1,136 @@
 .transaction-card{
+    height: 90px;
     border: 2px solid black;
     border-radius: 5px;
     padding: 20px;
     margin: 10px 30px;
     box-shadow: black 0px 0px 5px;
     position: relative;
+    /* background-image: linear-gradient(to right, #00dbde 0%, #fc00ff 100%); */
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
 }
 .title{
-    font-size: 20px;
+    font-size: 2rem;
     margin: 0px;
+}
+.date{
+    font-size: 20px;
 }
 .amount{
     position: absolute;
     right: 10px;
     top: 15px;
-    font-size: 25px;
+    font-size: 2rem;
     font-weight: bold;
+    background-color: white;
+    border-radius: 30px;
+    padding: 0px 15px;
+    box-shadow: black 0px 0px 5px;
 }
 .category{
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: 505;
     background-color: blue;
     color: aliceblue;
     position: absolute;
     right: 10px;
-    top: 50px;
-    padding: 5px 10px;
+    top: 76px;
+    padding: 6px 18px;
     border-radius: 10px;
+    
 }
 .delete-icon{
-    width: 25px;
+    width: 30px;
     margin-left: 30px;
     font-size: 20px;
     cursor: pointer;
-    color: red;
     transition: 0.2s;
 }
 
 .delete-icon:hover{
    transform: scale(1.2);
 }
+
+.wrap-delete * {
+    margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  .button-delete {
+      -webkit-touch-callout: none;
+        -webkit-user-select: none;
+         -khtml-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+            -webkit-tap-highlight-color: 
+  transparent;
+  position: absolute;
+  left: 300px;
+  top: 68px;
+    }
+    
+    .wrap-delete button {
+        width: 150px;
+        height: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        background: 
+  red;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 1px 1px 3px 
+  rgba(0,0,0,0.15);
+        background: 
+  red;
+    }
+    
+    .wrap-delete button, .wrap-delete button span {
+        transition: 200ms;
+    }
+    
+    .wrap-delete button .text {
+        transform: translateX(35px);
+        color: 
+  white;
+        font-weight: bold;
+    }
+    
+    .wrap-delete button .icon {
+        position: absolute;
+        border-left: 1px solid 
+  red;
+        transform: translateX(110px);
+        height: 40px;
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .wrap-delete button svg {
+        width: 15px;
+        fill: 
+  #eee;
+    }
+    
+    .wrap-delete button:hover {
+        background: 
+  red;
+    }
+    
+    .wrap-delete button:hover .text {
+        color: 
+  transparent;
+    }
+    
+    .wrap-delete button:hover .icon {
+        width: 150px;
+        border-left: none;
+        transform: translateX(0);
+    }
+    
+    .wrap-delete button:focus {
+        outline: none;
+    }
